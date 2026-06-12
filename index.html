@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUMO | Food Intelligence OS — Stop Wondering What To Eat</title>
+    <meta name="description" content="YUMO is your AI Food Intelligence Companion. It understands your mood, traditions, and kitchen to help you decide what to eat.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fffcf5',
+                            100: '#fdf8e8',
+                            200: '#f9edc6',
+                            300: '#f3da97',
+                            400: '#ecc260',
+                            500: '#e1a22f',
+                            600: '#c27e22',
+                            700: '#a25f1f',
+                            800: '#844c1f',
+                            900: '#6d3f1d',
+                            accent: '#D2691E', // Chocolate/Terracotta
+                            dark: '#1C1917',   // Stone Black
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass {
+            background: rgba(255, 253, 245, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(210, 105, 30, 0.1);
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #fdf8e8 0%, #fffcf5 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .food-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fffcf5; }
+        ::-webkit-scrollbar-thumb { background: #e1a22f; border-radius: 10px; }
+    </style>
+</head>
+
+<body class="bg-brand-50 text-brand-dark font-sans overflow-x-hidden">
+
+    <!-- Header -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="bg-brand-accent p-1.5 rounded-lg">
+                    <i data-lucide="utensils" class="text-white w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-bold font-serif tracking-tight">YUMO</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 items-center text-sm font-semibold text-brand-700">
+                <a href="#how" class="hover:text-brand-accent transition">How it Works</a>
+                <a href="#features" class="hover:text-brand-accent transition">Features</a>
+                <a href="#faq" class="hover:text-brand-accent transition">FAQ</a>
+            </div>
+
+            <a href="#signup" class="bg-brand-dark text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-brand-accent transition-all transform hover:scale-105 shadow-lg">
+                Join Early Access
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-48 md:pb-32 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h1 class="text-5xl md:text-7xl font-serif font-bold leading-tight mb-6">
+                    Stop Wondering <br>
+                    <span class="italic text-brand-accent">What To Eat.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-brand-800 mb-10 leading-relaxed max-w-lg">
+                    YUMO understands your mood, taste, family, traditions and context to recommend the right food at the right time.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#signup" class="bg-brand-accent text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2">
+                        Join Early Access <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center gap-4 text-sm text-brand-700">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-brand-50" src="https://i.pravatar.cc/100?u=1" alt="User">
+                        <img class="w-8 h-8 rounded-full border-2 border-brand-50" src="https://i.pravatar.cc/100?u=2" alt="User">
+                        <img class="w-8 h-8 rounded-full border-2 border-brand-50" src="https://i.pravatar.cc/100?u=3" alt="User">
+                    </div>
+                    <span>Join 2,000+ people waiting for YUMO</span>
+                </div>
+            </div>
+            <div class="relative reveal delay-200">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700">
+                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=1000" alt="Fresh Food Preparation" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/40 to-transparent"></div>
+                </div>
+                <!-- Floating Intelligence UI -->
+                <div class="absolute -bottom-6 -left-6 md:-left-12 bg-white p-6 rounded-2xl shadow-2xl max-w-xs border border-brand-100 hidden sm:block">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="p-1.5 bg-green-100 rounded text-green-700"><i data-lucide="cloud-sun" class="w-4 h-4"></i></span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-500">Weather Match</span>
+                    </div>
+                    <p class="text-sm font-semibold">"It's raining in Seattle. Based on your Grandma's recipe, how about a warm Tomato Basil Soup?"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-24 bg-brand-dark text-brand-50 px-6">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl md:text-5xl font-serif mb-8 italic">Decision fatigue is real.</h2>
+            <p class="text-xl text-brand-300 leading-relaxed">
+                The average family spends over 132 hours a year deciding what to eat. Between busy work schedules, picky eaters, and dietary restrictions, food has become a chore instead of a pleasure.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 mt-16 text-left">
+                <div class="p-6 border border-brand-800 rounded-2xl">
+                    <i data-lucide="brain-off" class="text-brand-400 mb-4 w-8 h-8"></i>
+                    <h3 class="font-bold mb-2">No More Fatigue</h3>
+                    <p class="text-sm text-brand-400">Stop scrolling through endless delivery apps or static recipe blogs.</p>
+                </div>
+                <div class="p-6 border border-brand-800 rounded-2xl">
+                    <i data-lucide="users" class="text-brand-400 mb-4 w-8 h-8"></i>
+                    <h3 class="font-bold mb-2">Family Harmony</h3>
+                    <p class="text-sm text-brand-400">Merging everyone's tastes and allergies into one perfect recommendation.</p>
+                </div>
+                <div class="p-6 border border-brand-800 rounded-2xl">
+                    <i data-lucide="trash-2" class="text-brand-400 mb-4 w-8 h-8"></i>
+                    <h3 class="font-bold mb-2">Zero Waste</h3>
+                    <p class="text-sm text-brand-400">We prioritize what’s already in your fridge before suggesting new items.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how" class="py-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-6xl font-serif mb-4">The Intelligence Behind the Plate</h2>
+                <p class="text-brand-700">YUMO isn't a recipe app. It's a Food OS.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-12">
+                    <div class="flex gap-6 reveal">
+                        <div class="flex-shrink-0 w-12 h-12 bg-brand-200 rounded-full flex items-center justify-center font-bold text-brand-700">1</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Connect Your Context</h3>
+                            <p class="text-brand-700 leading-relaxed">Securely sync your calendar, health data, and even local weather. YUMO knows if you just had a heavy workout or a long board meeting.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 reveal">
+                        <div class="flex-shrink-0 w-12 h-12 bg-brand-200 rounded-full flex items-center justify-center font-bold text-brand-700">2</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Define Your Palate</h3>
+                            <p class="text-brand-700 leading-relaxed">Share your food memories and family traditions. We learn that you love cilantro but hate truffles, and that Sunday dinner is always sacred.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 reveal">
+                        <div class="flex-shrink-0 w-12 h-12 bg-brand-200 rounded-full flex items-center justify-center font-bold text-brand-700">3</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">The Magic Recommendation</h3>
+                            <p class="text-brand-700 leading-relaxed">Every morning or evening, get a tailored suggestion. "It's cold out, you're tired, and you have spinach in the fridge. Let's make a 15-minute Palak Paneer."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative reveal">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800" class="rounded-[3rem] shadow-2xl border-8 border-white" alt="Cooking Context">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-brand-100 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-serif text-center mb-16 italic">Everything your kitchen was missing.</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all reveal">
+                    <i data-lucide="heart" class="text-brand-accent mb-6 w-10 h-10"></i>
+                    <h4 class="text-xl font-bold mb-3">Mood Pairing</h4>
+                    <p class="text-brand-700">Feeling celebratory? Or perhaps a bit low? YUMO suggests foods that physiologically support your emotional state.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all reveal delay-100">
+                    <i data-lucide="globe" class="text-brand-accent mb-6 w-10 h-10"></i>
+                    <h4 class="text-xl font-bold mb-3">Regional Culture</h4>
+                    <p class="text-brand-700">Whether it's Lunar New Year or a Southern BBQ, YUMO respects and suggests meals based on your heritage.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all reveal delay-200">
+                    <i data-lucide="shopping-cart" class="text-brand-accent mb-6 w-10 h-10"></i>
+                    <h4 class="text-xl font-bold mb-3">Contextual Grocery</h4>
+                    <p class="text-brand-700">One-tap ordering for missing ingredients through your favorite local delivery services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Early Access Form -->
+    <section id="signup" class="py-24 px-6 text-center">
+        <div class="max-w-3xl mx-auto bg-brand-accent rounded-[3rem] p-12 md:p-20 text-white shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl font-serif mb-6 italic">Taste the future.</h2>
+                <p class="text-brand-100 text-lg mb-10">Join our exclusive beta and be the first to experience the Food Intelligence OS.</p>
+                <form class="flex flex-col md:flex-row gap-4" onsubmit="event.preventDefault(); alert('Welcome to the future of food! We will contact you soon.');">
+                    <input type="email" placeholder="Your best email address" required class="flex-grow px-8 py-5 rounded-full text-brand-dark focus:outline-none focus:ring-4 focus:ring-brand-200 text-lg">
+                    <button class="bg-brand-dark text-white px-10 py-5 rounded-full font-bold hover:bg-black transition-colors text-lg">
+                        Get Early Access
+                    </button>
+                </form>
+                <p class="mt-6 text-sm text-brand-200">No spam. Only delicious updates. Private Beta launching Winter 2024.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 px-6 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-serif text-center mb-16 italic">Common Questions</h2>
+            <div class="space-y-6">
+                <div class="border-b border-brand-100 pb-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">How is YUMO different from a recipe app?</h3>
+                    <p class="text-brand-700 leading-relaxed">Recipe apps are passive databases. YUMO is an active Intelligence OS. It doesn't wait for you to search; it analyzes your life context and provides the answer before you even ask.</p>
+                </div>
+                <div class="border-b border-brand-100 pb-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">Does it work with my specific diet?</h3>
+                    <p class="text-brand-700 leading-relaxed">Yes. Whether you are Vegan, Keto, Halal, or have severe nut allergies, YUMO’s core engine filters every single intelligence layer through your safety and preference profile.</p>
+                </div>
+                <div class="border-b border-brand-100 pb-6 reveal">
+                    <h3 class="text-xl font-bold mb-3">Is my personal data safe?</h3>
+                    <p class="text-brand-700 leading-relaxed">Your food memories and habits are private. We use bank-grade encryption and never sell your personal data to advertisers. Our business model is based on intelligence, not ads.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-brand-50 border-t border-brand-200 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <div class="bg-brand-accent p-1 rounded-lg">
+                    <i data-lucide="utensils" class="text-white w-4 h-4"></i>
+                </div>
+                <span class="text-xl font-bold font-serif italic">YUMO</span>
+            </div>
+            <div class="flex gap-8 text-sm font-medium text-brand-600">
+                <a href="#" class="hover:text-brand-accent">Privacy Policy</a>
+                <a href="#" class="hover:text-brand-accent">Terms of Service</a>
+                <a href="#" class="hover:text-brand-accent">Contact Us</a>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="text-brand-dark hover:text-brand-accent"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="text-brand-dark hover:text-brand-accent"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+        <div class="text-center mt-12 text-sm text-brand-400">
+            &copy; 2024 YUMO Food Intelligence Systems. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Navbar Shrink
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('h-16');
+                nav.classList.remove('h-20');
+            } else {
+                nav.classList.add('h-20');
+                nav.classList.remove('h-16');
+            }
+        });
+    </script>
+</body>
+</html>
